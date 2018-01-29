@@ -1,2 +1,5 @@
-# d2x-ctfc
-# d2x-ctfc
+# d2x-ta
+Modes:
+CTF Classic
+Team Arena
+Turkey Shoot
