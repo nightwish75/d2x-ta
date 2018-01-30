@@ -254,8 +254,8 @@ void do_weapon_n_item_stuff()
 			Flare_create(ConsoleObject);
 	}
 //Turkey Begin
-	if (!((Game_mode & GM_MULTI) && (Game_mode & GM_TURKEY) && get_team(Player_num)))
-	{
+if (!((Game_mode & GM_MULTI) && (Game_mode & GM_TURKEY) && get_team(Player_num)))
+{
 //Turkey End
 	if (allowed_to_fire_missile() && Controls.fire_secondary_state)
 		Global_missile_firing_count += Weapon_info[Secondary_weapon_to_weapon_info[Secondary_weapon]].fire_count;
@@ -292,7 +292,10 @@ void do_weapon_n_item_stuff()
 
 	if (Global_missile_firing_count < 0)
 		Global_missile_firing_count = 0;
-
+//Turkey Begin
+//should we allow turkey to poop?
+}
+//Turkey End
 	//	Drop proximity bombs.
 	while (Controls.drop_bomb_count > 0)
 	{
@@ -324,7 +327,11 @@ void do_weapon_n_item_stuff()
 		}
 		Controls.toggle_bomb_count = 0;
 	}
-	}
+//Turkey Begin
+//or maybe we shouldnt allow turkey to poop
+//}
+//Turkey End
+
 	if (Controls.energy_to_shield_state && (Players[Player_num].flags & PLAYER_FLAGS_CONVERTER))
 		transfer_energy_to_shield();
 	

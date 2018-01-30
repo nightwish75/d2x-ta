@@ -246,6 +246,11 @@ object *object_create_explosion_sub(object *objp, short segnum, vms_vector * pos
 												killer_name = Players[killer->id].callsign; 
 												if(objp != NULL && objp->type == OBJ_WEAPON) {
 													weapon_name = weapon_id_to_name(objp->id); 
+												//TA Begin,CTFC Begin ALLBEGIN - finally I got you sucker, game breaking gauss overpower stuff	
+													if ((Game_mode & GM_MULTI) && (objp->id == GAUSS_ID))
+														damage /= 2;
+
+												//sucker end
 												} else if(objp != NULL && objp->type == OBJ_PLAYER) {
 													weapon_name = "death"; 
 												} else {
@@ -346,7 +351,6 @@ object *explode_badass_object(object *objp, fix damage, fix distance, fix force)
 {
 
 	object 	*rval;
-
 	rval = object_create_badass_explosion(objp, objp->segnum, &objp->pos, objp->size,
 					get_explosion_vclip(objp, 0),
 					damage, distance, force,
